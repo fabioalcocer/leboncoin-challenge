@@ -1,12 +1,12 @@
 module.exports = {
+  experimental: {
+    appDir: true,
+  },
   i18n: {
     locales: ['fr'],
-    defaultLocale: 'fr'
+    defaultLocale: 'fr',
   },
   eslint: {
-    ignoreDuringBuilds: true
+    ignoreDuringBuilds: true,
   },
-  compiler: {
-    styledComponents: true
-  }
 }

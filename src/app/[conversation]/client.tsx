@@ -1,8 +1,7 @@
-import type { GetServerSideProps } from 'next'
+'use client'
 import { FormEvent, useState } from 'react'
-import type { Message } from '../types/message'
-import { getLoggedUserId } from '../utils/getLoggedUserId'
 import useSWR from 'swr'
+import { Message } from '../../types/message'
 
 type Props = {
   user: number
@@ -10,31 +9,13 @@ type Props = {
   conversation: number
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-  params: { conversation }
-}) => {
-  const user = getLoggedUserId()
-
-  const messages: Message[] = await fetch(
-    `http://localhost:3005/messages/${conversation}`
-  ).then((res) => res.json())
-
-  return {
-    props: {
-      user,
-      messages,
-      conversation
-    }
-  }
-}
-
 const fetcher = (url: RequestInfo | URL, options: RequestInit) =>
   fetch(url, options).then((res) => res.json())
 
-const ConversationPage = ({
+const ConversationClientPage = ({
   messages: initialMessages,
   user,
-  conversation
+  conversation,
 }: Props) => {
   const [message, setMessage] = useState<string>('')
   const { data: messages } = useSWR(
@@ -42,7 +23,7 @@ const ConversationPage = ({
     fetcher,
     {
       refreshInterval: 5000,
-      fallbackData: initialMessages
+      fallbackData: initialMessages,
     }
   )
 
@@ -55,14 +36,14 @@ const ConversationPage = ({
         {
           method: 'POST',
           headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
           },
           body: JSON.stringify({
             conversationId: conversation,
             body: message,
             authorId: user,
-            timestamp: 0
-          })
+            timestamp: 0,
+          }),
         }
       )
 
@@ -86,7 +67,7 @@ const ConversationPage = ({
                   backgroundColor: isSender
                     ? 'dodgerblue'
                     : 'whitesmoke',
-                  color: isSender ? 'white' : 'black'
+                  color: isSender ? 'white' : 'black',
                 }}
                 key={message.id}
               >
@@ -110,4 +91,4 @@ const ConversationPage = ({
   )
 }
 
-export default ConversationPage
+export default ConversationClientPage

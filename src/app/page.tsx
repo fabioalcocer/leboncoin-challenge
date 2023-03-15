@@ -1,27 +1,10 @@
 import Link from 'next/link'
-import { Conversation } from '../types/conversation'
-import { getLoggedUserId } from '../utils/getLoggedUserId'
+import api from '../api'
 
-type Props = {
-  user: number
-  conversations: Conversation[]
-}
+const HomePage = async () => {
+  const user = await api.user.fetch()
+  const conversations = await api.conversation.list(user)
 
-export const getServerSideProps = async () => {
-  const user = getLoggedUserId()
-
-  const conversations: Conversation[] = await fetch(
-    `http://localhost:3005/conversations/${user}`
-  ).then((res) => res.json())
-  return {
-    props: {
-      user,
-      conversations
-    }
-  }
-}
-
-const HomePage = ({ conversations, user }: Props) => {
   return (
     <main>
       <ul>
@@ -31,7 +14,7 @@ const HomePage = ({ conversations, user }: Props) => {
             senderId,
             recipientNickname,
             senderNickname,
-            lastMessageTimestamp
+            lastMessageTimestamp,
           }) => (
             <li key={id}>
               <Link href={`/${id}`}>

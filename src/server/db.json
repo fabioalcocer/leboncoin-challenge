@@ -74,6 +74,20 @@
       "authorId": 2,
       "timestamp": 0,
       "id": 12
+    },
+    {
+      "conversationId": "1",
+      "body": "mensaje",
+      "authorId": 1,
+      "timestamp": 0,
+      "id": 13
+    },
+    {
+      "conversationId": "1",
+      "body": "seguro",
+      "authorId": 2,
+      "timestamp": 0,
+      "id": 14
     }
   ],
   "users": [
