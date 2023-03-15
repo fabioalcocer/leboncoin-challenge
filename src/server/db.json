@@ -53,6 +53,20 @@
       "timestamp": 1620284667,
       "authorId": 2,
       "body": "Bonjour c'est le premier message de la seconde conversation"
+    },
+    {
+      "conversationId": "1",
+      "body": "Hola mi rey",
+      "authorId": 1,
+      "timestamp": 0,
+      "id": 5
+    },
+    {
+      "conversationId": "1",
+      "body": "funciona?",
+      "authorId": 1,
+      "timestamp": 0,
+      "id": 6
     }
   ],
   "users": [

@@ -22,7 +22,6 @@ export const getServerSideProps = async () => {
 }
 
 const HomePage = ({ conversations, user }: Props) => {
-  console.log(conversations)
   return (
     <main>
       <ul>
