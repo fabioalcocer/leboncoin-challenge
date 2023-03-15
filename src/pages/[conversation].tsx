@@ -1,7 +1,8 @@
 import type { GetServerSideProps } from 'next'
+import { FormEvent, useState } from 'react'
 import type { Message } from '../types/message'
 import { getLoggedUserId } from '../utils/getLoggedUserId'
-import { FormEvent, useState } from 'react'
+import useSWR from 'swr'
 
 type Props = {
   user: number
@@ -18,7 +19,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     `http://localhost:3005/messages/${conversation}`
   ).then((res) => res.json())
 
-  console.log(messages)
   return {
     props: {
       user,
@@ -28,14 +28,27 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 }
 
+const fetcher = (url: RequestInfo | URL, options: RequestInit) =>
+  fetch(url, options).then((res) => res.json())
+
 const ConversationPage = ({
-  messages,
+  messages: initialMessages,
   user,
   conversation
 }: Props) => {
   const [message, setMessage] = useState<string>('')
+  const { data: messages } = useSWR(
+    `http://localhost:3005/messages/${conversation}`,
+    fetcher,
+    {
+      refreshInterval: 5000,
+      fallbackData: initialMessages
+    }
+  )
 
   const handleSubmit = async (event: FormEvent) => {
+    // event.preventDefault()
+
     try {
       const res = await fetch(
         `http://localhost:3005/messages/${conversation}`,
