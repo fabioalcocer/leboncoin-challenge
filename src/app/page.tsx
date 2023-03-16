@@ -10,19 +10,23 @@ const HomePage = async () => {
 
   return (
     <main className='text-zinc-50 flex flex-col mt-20 p-4'>
-      <Image src={Logo} alt='title leboncoin' className='w-64 mx-auto'></Image>
-      <ul className='mt-12 flex flex-col gap-6 w-full max-w-xl'>
+      <Image
+        src={Logo}
+        alt='title leboncoin'
+        className='w-64 mx-auto'
+      ></Image>
+      <ul className='mt-12 flex flex-col gap-6 w-full max-w-xl mx-auto'>
         {conversations.map(
           ({
             id,
             senderId,
             recipientNickname,
             senderNickname,
-            lastMessageTimestamp
+            lastMessageTimestamp,
           }) => (
             <li
               key={id}
-              className='w-full flex items-center gap-8 bg-slate-900 py-2 px-3 rounded-xl shadow-inner shadow-slate-700'
+              className='w-full flex items-center gap-8 bg-slate-900 py-2 px-3 rounded-xl shadow-inner shadow-slate-700 hover:shadow-none'
             >
               <Image
                 src={Avatar}

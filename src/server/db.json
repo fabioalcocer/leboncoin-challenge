@@ -81,6 +81,13 @@
       "authorId": 1,
       "timestamp": 0,
       "id": 20
+    },
+    {
+      "conversationId": "2",
+      "body": "Hi!",
+      "authorId": 1,
+      "timestamp": 0,
+      "id": 21
     }
   ],
   "users": [

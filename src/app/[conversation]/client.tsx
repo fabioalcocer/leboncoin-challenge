@@ -60,7 +60,7 @@ const ConversationClientPage = ({
 
   return (
     <main className='flex flex-col justify-center items-center min-h-screen w-full p-2'>
-      <div className='bg-zinc-900 rounded-md overflow-hidden w-full max-w-xl'>
+      <div className='bg-zinc-900 rounded-md overflow-hidden w-full max-w-xl min-h-[500px] flex flex-col'>
         <header className='bg-blue-800 p-3 pl-5 text-zinc-50'>
           <p className='font-bold text-lg'>
             {userConversation?.recipientNickname} -{' '}
@@ -68,7 +68,7 @@ const ConversationClientPage = ({
           </p>
         </header>
         <form
-          className='w-full flex items-center flex-col p-3 pt-5'
+          className='w-full h-full mt-auto flex items-center flex-col p-3 pt-5'
           action=''
           onSubmit={handleSubmit}
         >
@@ -89,7 +89,7 @@ const ConversationClientPage = ({
               )
             })}
           </ul>
-          <div className='relative w-full my-3 mt-5'>
+          <div className='relative w-full my-3 mt-5 self-end'>
             <input
               value={message}
               type='text'
