@@ -8,16 +8,18 @@ type Props = {
 }
 
 const ConversationPage = async ({
-  params: { conversation },
+  params: { conversation: conversationId },
 }: Props) => {
-  const user = await api.user.fetch()
-  const messages = await api.messages.list(conversation)
+  const user = api.user.fetch()
+  const messages = await api.messages.list(conversationId)
+  const conversations = await api.conversation.list(user)
 
   return (
     <ConversationClientPage
       messages={messages}
       user={user}
-      conversation={conversation}
+      conversation={conversationId}
+      conversations={conversations}
     />
   )
 }

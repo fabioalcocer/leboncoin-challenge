@@ -56,13 +56,6 @@
     },
     {
       "conversationId": "1",
-      "body": "Hola mi rey",
-      "authorId": 1,
-      "timestamp": 0,
-      "id": 5
-    },
-    {
-      "conversationId": "1",
       "body": "funciona pa?",
       "authorId": 1,
       "timestamp": 0,
@@ -70,24 +63,24 @@
     },
     {
       "conversationId": "1",
-      "body": "todo god",
+      "body": "perfect",
       "authorId": 2,
       "timestamp": 0,
-      "id": 12
+      "id": 17
     },
     {
       "conversationId": "1",
-      "body": "mensaje",
+      "body": "cierto",
       "authorId": 1,
       "timestamp": 0,
-      "id": 13
+      "id": 19
     },
     {
-      "conversationId": "1",
-      "body": "seguro",
-      "authorId": 2,
+      "conversationId": "3",
+      "body": "Hi!",
+      "authorId": 1,
       "timestamp": 0,
-      "id": 14
+      "id": 20
     }
   ],
   "users": [
